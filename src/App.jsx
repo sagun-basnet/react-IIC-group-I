@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./components/Button";
 import Form from "./components/Form";
 import Home from "./pages/Home";
@@ -12,14 +12,24 @@ const App = () => {
     console.log(count);
   };
 
+  useEffect(() => {
+    console.log("I am from useEffect");
+  }, []);
+
   // const handleClick = (a) => {
   //   document.querySelector("body").style.backgroundColor = a;
   // };
   return (
     <>
-      {/* <span>{count}</span>
-      <br /> */}
-      <div
+      <span>{count}</span>
+      <br />
+      <button
+        onClick={handleCount}
+        className="p-2 px-4 bg-red-500 rounded-md font-bold"
+      >
+        click
+      </button>
+      {/* <div
         className={`h-screen flex justify-center items-center ${
           state ? "bg-white" : "bg-black"
         }`}
@@ -30,7 +40,7 @@ const App = () => {
         >
           {state ? "OFF" : "ON"}
         </button>
-      </div>
+      </div> */}
       {/* <Home title="This is home" /> */}
       {/* <Form type="register" />
       <Button text="See more" color="red" /> */}

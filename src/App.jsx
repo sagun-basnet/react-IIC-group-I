@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import Home from "./pages/Home";
 const App = () => {
   const [count, setCount] = useState(0);
+  const [state, setState] = useState(false);
   // let count = 0;
   const handleCount = () => {
     // count += 1;
@@ -16,14 +17,20 @@ const App = () => {
   // };
   return (
     <>
-      <span>{count}</span>
-      <br />
-      <button
-        onClick={handleCount}
-        className="p-2 px-4 bg-red-500 rounded-md font-bold"
+      {/* <span>{count}</span>
+      <br /> */}
+      <div
+        className={`h-screen flex justify-center items-center ${
+          state ? "bg-white" : "bg-black"
+        }`}
       >
-        Add
-      </button>
+        <button
+          onClick={() => setState(!state)}
+          className="p-2 px-4 bg-red-500 rounded-md font-bold"
+        >
+          {state ? "OFF" : "ON"}
+        </button>
+      </div>
       {/* <Home title="This is home" /> */}
       {/* <Form type="register" />
       <Button text="See more" color="red" /> */}

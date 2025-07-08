@@ -1,81 +1,93 @@
-import { useEffect, useState } from "react";
-import Button from "./components/Button";
-import Form from "./components/Form";
+// import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Service from "./pages/Service";
+import Navbar from "./components/Navbar";
+import PageNotFound from "./pages/PageNotFound";
+import path from "path";
+import { Children } from "react";
+import Footer from "./components/Footer";
+import Login from "./pages/Login";
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [state, setState] = useState(false);
-  // let count = 0;
-  const handleCount = () => {
-    // count += 1;
-    setCount(count + 1);
-    console.log(count);
+  const Layout = () => {
+    return (
+      <>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </>
+    );
   };
 
-  useEffect(() => {
-    console.log("I am from useEffect");
-  }, []);
+  const DashboardLayout = () => {
+    return (
+      <>
+        <div>
+          <Topbar />
+        </div>
+        <div>
+          <Sidebar />
+          <Outlet />
+        </div>
+      </>
+    );
+  };
 
-  // const handleClick = (a) => {
-  //   document.querySelector("body").style.backgroundColor = a;
-  // };
+  const pageRoute = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "",
+          element: <Home />,
+        },
+        {
+          path: "/about",
+          element: <About />,
+        },
+        {
+          path: "/service",
+          element: <Service />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "*",
+      element: <PageNotFound />,
+    },
+    {
+      path: "/dashboard",
+      element: <DashboardLayout/>,
+      children: [
+        {
+
+        }
+      ]
+    },
+  ]);
+
   return (
     <>
-      <span>{count}</span>
-      <br />
-      <button
-        onClick={handleCount}
-        className="p-2 px-4 bg-red-500 rounded-md font-bold"
-      >
-        click
-      </button>
-      {/* <div
-        className={`h-screen flex justify-center items-center ${
-          state ? "bg-white" : "bg-black"
-        }`}
-      >
-        <button
-          onClick={() => setState(!state)}
-          className="p-2 px-4 bg-red-500 rounded-md font-bold"
-        >
-          {state ? "OFF" : "ON"}
-        </button>
-      </div> */}
-      {/* <Home title="This is home" /> */}
-      {/* <Form type="register" />
-      <Button text="See more" color="red" /> */}
-      {/* <div className="flex justify-evenly">
-        <button
-          onClick={() => handleClick("red")}
-          className="p-2 px-4 bg-red-500 rounded-md font-bold"
-        >
-          Red
-        </button>
-        <button
-          onClick={() => handleClick("blue")}
-          className="p-2 px-4 bg-blue-500 rounded-md font-bold"
-        >
-          Blue
-        </button>
-        <button
-          onClick={() => handleClick("yellow")}
-          className="p-2 px-4 bg-yellow-500 rounded-md font-bold"
-        >
-          Yellow
-        </button>
-        <button
-          onClick={() => handleClick("black")}
-          className="p-2 px-4 bg-black rounded-md font-bold"
-        >
-          Black
-        </button>
-        <button
-          onClick={() => handleClick("cyan")}
-          className="p-2 px-4 bg-cyan-500 rounded-md font-bold"
-        >
-          Cyan
-        </button>
-      </div> */}
+      <RouterProvider router={pageRoute} />
+      {/* <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/service" element={<Service />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes> */}
     </>
   );
 };

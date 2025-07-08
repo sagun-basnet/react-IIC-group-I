@@ -1,13 +1,22 @@
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="h-[5rem] bg-amber-600 flex justify-between items-center px-8">
       <div className="text-[3rem] font-bold">LOGO</div>
       <div className="">
         <ul className="flex gap-8 text-xl ">
-          <li>Home</li>
-          <li>About</li>
-          <li>Services</li>
-          <li>Contact</li>
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="/about">
+            <li>About</li>
+          </Link>
+          <Link to="/service">
+            <li>Service</li>
+          </Link>
+          <Link to="/contact">
+            <li>Contact</li>
+          </Link>
         </ul>
       </div>
       <div className="flex gap-4">

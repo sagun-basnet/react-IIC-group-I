@@ -3,10 +3,10 @@ import Navbar from "../components/Navbar";
 import Herosection from "../components/Herosection";
 import Footer from "../components/Footer";
 
-const Home = ({ title }) => {
+const Home = () => {
   return (
     <>
-      <h1 className="text-3xl">{title}</h1>
+      <h1 className="text-3xl">Home page</h1>
       {/* <Navbar />
       <Herosection />
       <Footer /> */}

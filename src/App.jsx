@@ -6,10 +6,9 @@ import Contact from "./pages/Contact";
 import Service from "./pages/Service";
 import Navbar from "./components/Navbar";
 import PageNotFound from "./pages/PageNotFound";
-import path from "path";
-import { Children } from "react";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
+import Form from "./components/Form";
 const App = () => {
   const Layout = () => {
     return (
@@ -17,20 +16,6 @@ const App = () => {
         <Navbar />
         <Outlet />
         <Footer />
-      </>
-    );
-  };
-
-  const DashboardLayout = () => {
-    return (
-      <>
-        <div>
-          <Topbar />
-        </div>
-        <div>
-          <Sidebar />
-          <Outlet />
-        </div>
       </>
     );
   };
@@ -63,17 +48,12 @@ const App = () => {
       element: <Login />,
     },
     {
-      path: "*",
-      element: <PageNotFound />,
+      path: "/form",
+      element: <Form />,
     },
     {
-      path: "/dashboard",
-      element: <DashboardLayout/>,
-      children: [
-        {
-
-        }
-      ]
+      path: "*",
+      element: <PageNotFound />,
     },
   ]);
 

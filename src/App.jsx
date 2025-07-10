@@ -9,6 +9,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Form from "./components/Form";
+import APIFetch from "./components/APIFetch";
 const App = () => {
   const Layout = () => {
     return (
@@ -50,6 +51,10 @@ const App = () => {
     {
       path: "/form",
       element: <Form />,
+    },
+    {
+      path: "/api-fetch",
+      element: <APIFetch />,
     },
     {
       path: "*",

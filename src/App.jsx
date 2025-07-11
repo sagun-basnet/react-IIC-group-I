@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Form from "./components/Form";
 import APIFetch from "./components/APIFetch";
+import GetUser from "./components/GetUser";
 const App = () => {
   const Layout = () => {
     return (
@@ -55,6 +56,10 @@ const App = () => {
     {
       path: "/api-fetch",
       element: <APIFetch />,
+    },
+    {
+      path: "/get-user",
+      element: <GetUser />,
     },
     {
       path: "*",
